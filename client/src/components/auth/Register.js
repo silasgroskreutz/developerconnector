@@ -1,12 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 // import axios from 'axios';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isAuthenicated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +25,7 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      setAlert('SUCCESS');
+      register({ name, email, password });
       /* Code here to test registering new users
       const newUser = {
         name,
@@ -47,6 +48,10 @@ const Register = ({ setAlert }) => {
       } */
     }
   };
+
+  if (isAuthenicated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <Fragment>
@@ -109,7 +114,13 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenicated: PropTypes.bool
 };
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = state => ({
+  isAuthenicated: state.auth.isAuthenicated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
