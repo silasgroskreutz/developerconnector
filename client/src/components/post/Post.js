@@ -32,7 +32,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
 };
 
 Post.propTypes = {
-  getPost: PropTypes.object.isRequired,
+  getPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired
 };
 

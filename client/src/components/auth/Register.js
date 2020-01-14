@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 // import axios from 'axios';
 
-const Register = ({ setAlert, register, isAuthenicated }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +49,7 @@ const Register = ({ setAlert, register, isAuthenicated }) => {
     }
   };
 
-  if (isAuthenicated) {
+  if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
 
@@ -57,7 +57,7 @@ const Register = ({ setAlert, register, isAuthenicated }) => {
     <Fragment>
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
+        <i className='fas fa-user' /> Create Your Account
       </p>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
@@ -116,11 +116,11 @@ const Register = ({ setAlert, register, isAuthenicated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenicated: PropTypes.bool
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenicated: state.auth.isAuthenicated
+  isAuthenticated: state.auth.isAuthenicated
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);
