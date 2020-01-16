@@ -1,4 +1,6 @@
-"mongoURI": "mongodb+srv://mongoDB123:Jyqukxvj9DkP79c2@cluster0-s66r0.gcp.mongodb.net/test?retryWrites=true&w=majority",
-"jwtSecret": "mysecrettoken",
-"githubClientId": "7a9aae65d4c86cf159e4",
-"githubSecret": "806afffa663d13d620cea1253061545fa174cf04"
+{
+  "mongoURI": "mongodb+srv://mongoDB123:Jyqukxvj9DkP79c2@cluster0-s66r0.gcp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "7a9aae65d4c86cf159e4",
+  "githubSecret": "806afffa663d13d620cea1253061545fa174cf04"
+}
