@@ -17,7 +17,7 @@ router.post(
     check('name', 'Name is required')
       .not()
       .isEmpty(),
-    check('email', 'please include a valid email').isEmail(),
+    check('email', 'Please include a valid email').isEmail(),
     check(
       'password',
       'Please enter a password with 6 or more characters'
@@ -72,7 +72,7 @@ router.post(
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
